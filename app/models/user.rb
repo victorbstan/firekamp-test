@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
+  has_many :favorites
+  has_many :artworks, through: :favorites
+
   devise :database_authenticatable
 
   validates :email, presence: true, length: { maximum: 500 }, uniqueness: { case_sensitive: false },

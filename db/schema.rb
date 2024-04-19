@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_19_134835) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_224049) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -35,6 +38,43 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_134835) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "artworks", force: :cascade do |t|
+    t.string "title"
+    t.integer "date_start"
+    t.integer "date_end"
+    t.string "date_display"
+    t.string "artist_display"
+    t.string "place_of_origin"
+    t.string "description"
+    t.string "short_description"
+    t.string "dimensions"
+    t.string "medium_display"
+    t.string "credit_line"
+    t.string "term_titles", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "image_id"
+    t.index ["image_id"], name: "index_artworks_on_image_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "artwork_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_favorites_on_artwork_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "artwork_id"
+    t.string "url"
+    t.string "thumbnail_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_images_on_artwork_id"
   end
 
   create_table "users", force: :cascade do |t|
