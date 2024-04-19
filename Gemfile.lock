@@ -50,6 +50,11 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_model_serializers (0.10.14)
+      actionpack (>= 4.1)
+      activemodel (>= 4.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activeadmin (3.2.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1)
@@ -97,6 +102,7 @@ GEM
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
+    byebug (11.1.3)
     capybara (3.40.0)
       addressable
       matrix
@@ -106,6 +112,8 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    case_transform (0.2)
+      activesupport
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -120,6 +128,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
+    dotenv (3.1.0)
     drb (2.2.1)
     erubi (1.12.0)
     ffi (1.16.3)
@@ -156,6 +165,7 @@ GEM
     json (2.7.2)
     json-schema (4.3.0)
       addressable (>= 2.8)
+    jsonapi-renderer (0.2.2)
     jwt (2.8.1)
       base64
     kaminari (1.2.2)
@@ -386,12 +396,15 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_model_serializers (~> 0.10.14)
   activeadmin (~> 3.2)
   bcrypt (~> 3.1)
   bootsnap
+  byebug (~> 11.1)
   capybara
   debug
   devise (~> 4.9)
+  dotenv (~> 3.1)
   importmap-rails
   jbuilder
   jwt (~> 2.8)

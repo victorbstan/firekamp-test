@@ -50,6 +50,7 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+  gem 'dotenv', '~> 3.1'
   gem 'rspec-rails', '~> 6.1'
   gem 'rswag-specs', '~> 2.13'
 end
@@ -63,6 +64,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'byebug', '~> 11.1'
 end
 
 group :test do
@@ -88,3 +91,5 @@ gem 'sassc-rails', '~> 2.1'
 gem 'rubocop', '~> 1.63'
 
 gem 'rack-cors', '~> 2.0'
+
+gem 'active_model_serializers', '~> 0.10.14'
