@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Rspec and Swagger (API documentation generator)
 
-Things you may want to cover:
+Rswag gem: https://github.com/rswag/rswag
 
-* Ruby version
+### Generating Swagger docs from Rspec
 
-* System dependencies
+`RAILS_ENV=test rails rswag`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+View API docs: `http://127.0.0.1:3000/api-docs/`
