@@ -86,3 +86,5 @@ gem 'rswag-ui', '~> 2.13'
 gem 'sassc-rails', '~> 2.1'
 
 gem 'rubocop', '~> 1.63'
+
+gem 'rack-cors', '~> 2.0'
