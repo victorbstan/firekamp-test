@@ -21,13 +21,30 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
+      # Define the security scheme type (HTTP bearer)
+      components: {
+        securitySchemes: {
+          # arbitrary name for the security scheme
+          bearerAuth: {
+            name: 'Authorization',
+            scheme: :bearer,
+            type: :http,
+            in: :header,
+            bearerFormat: :JWT # optional, arbitrary value for documentation purposes
+          }
+        }
+      },
+      # Apply the security globally to all operations
+      security: [
+        bearerAuth: [] # use the same name as above
+      ],
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://127.0.0.1:3000',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: '127.0.0.1'
             }
           }
         }
