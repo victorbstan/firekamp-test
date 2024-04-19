@@ -17,9 +17,47 @@ paths:
   "/api/v1/register":
     post:
       summary: create user
+      tags:
+      - authentication
+      parameters: []
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/api/v1/login":
+    post:
+      summary: login user
+      tags:
+      - authentication
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
 servers:
 - url: http://127.0.0.1:3000
   variables:
