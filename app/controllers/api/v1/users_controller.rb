@@ -2,12 +2,12 @@
 
 module Api
   module V1
-    class UserController < Api::V1::ApiController
+    class UsersController < Api::V1::ApiController
       before_action :authorized, only: [:auto_login]
 
       def register
-        @user = User.create(user_params)
-        if @user.valid?
+        @user = User.new(user_params)
+        if @user.save
           token = encode_token({ user_id: @user.id })
           render json: { user: @user, token: }
         else
