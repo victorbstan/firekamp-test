@@ -12,6 +12,8 @@ class CreateArtworks < ActiveRecord::Migration[7.1]
       t.string :dimensions
       t.string :medium_display
       t.string :credit_line
+      t.string :image_url
+      t.string :image_thumbnail_url
 
       t.timestamps
     end
