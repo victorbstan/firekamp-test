@@ -19,7 +19,7 @@ module Api
       def search
         # TODO: add pagination
         search_term = params[:search_term]
-        return render(json: [], status: :bad_request) if search_term.empty?
+        return render(json: { error: 'Empty search value' }, status: :bad_request) if search_term.empty?
 
         artworks = ArtworkQuery.search(search_term)
         render json: artworks, each_serializer: ArtworkSerializer, status: :ok
@@ -27,9 +27,9 @@ module Api
 
       # POST
       def favorite
-        favorite = Favorite.new(user: @current_user, artwork_id: params[:artwork_id])
+        favorite = ArtworkQuery.favorite(user_id: @current_user.id, artwork_id: params[:artwork_id])
         if favorite.save
-          render json: null, status: :ok
+          render json: nil, status: :ok
         else
           render json: { error: favorite.errors.full_messages }, status: :bad_request
         end
