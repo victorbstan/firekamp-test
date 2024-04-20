@@ -18,7 +18,10 @@ module Api
 
       def search
         # TODO: add pagination
-        artworks = Artwork.where(title: artwork_params[:search_term])
+        search_term = params[:search_term]
+        return render(json: [], status: :bad_request) if search_term.empty?
+
+        artworks = ArtworkQuery.search(search_term)
         render json: artworks, each_serializer: ArtworkSerializer, status: :ok
       end
 
