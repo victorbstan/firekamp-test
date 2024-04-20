@@ -10,5 +10,9 @@ class ArtworkQuery
         "%#{search_term}%"
       )
     end
+
+    def favorite(user_id:, artwork_id:)
+      Favorite.new(user_id:, artwork_id:)
+    end
   end
 end
