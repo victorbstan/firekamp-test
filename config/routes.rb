@@ -21,8 +21,8 @@ Rails.application.routes.draw do
       get '/auto_login', controller: 'users', action: 'auto_login'
 
       resources :artworks, only: %i[index show]
-      get '/artworks/search', controller: 'artworks', action: 'search'
-      get '/artworks/favorites', controller: 'artworks', action: 'favorites'
+      get '/artworks/search/:search_term', controller: 'artworks', action: 'search'
+      post '/artworks/favorite', controller: 'artworks', action: 'favorites'
     end
   end
 end

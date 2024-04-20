@@ -1,5 +1,4 @@
 ActiveAdmin.register Artwork do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -16,16 +15,16 @@ ActiveAdmin.register Artwork do
   # end
 
   filter :title
-  filter  :date_start
-  filter  :date_end
-  filter  :date_display
-  filter  :artist_display
-  filter  :place_of_origin
-  filter  :description
-  filter  :short_description
-  filter  :dimensions
-  filter  :medium_display
-  filter  :credit_line
+  filter :date_start
+  filter :date_end
+  filter :date_display
+  filter :artist_display
+  filter :place_of_origin
+  filter :description
+  filter :short_description
+  filter :dimensions
+  filter :medium_display
+  filter :credit_line
 
   permit_params :title,
                 :date_start,
@@ -38,9 +37,12 @@ ActiveAdmin.register Artwork do
                 :dimensions,
                 :medium_display,
                 :credit_line,
-                image_attributes: [:id, :url, :thumbnail_url]
+                :image_url,
+                :image_thumbnail_url
 
   form do |f|
+    f.semantic_errors
+
     f.inputs 'Details' do
       f.input :title
       f.input :description
@@ -56,7 +58,8 @@ ActiveAdmin.register Artwork do
     end
 
     f.inputs 'Image' do
-      # TODO: image input
+      f.input :image_url, as: :string
+      f.input :image_thumbnail_url, as: :string
     end
 
     f.actions

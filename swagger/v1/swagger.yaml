@@ -14,6 +14,52 @@ components:
 security:
 - bearerAuth: []
 paths:
+  "/api/v1/artworks":
+    get:
+      summary: list artworks
+      tags:
+      - artworks
+      responses:
+        '200':
+          description: successful
+  "/api/v1/artworks/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show artwork
+      tags:
+      - artworks
+      responses:
+        '200':
+          description: successful
+  "/api/v1/artworks/search/{search_term}":
+    parameters:
+    - name: search_term
+      in: path
+      description: search term
+      required: true
+      schema:
+        type: string
+    get:
+      summary: search artwork
+      tags:
+      - artworks
+      responses:
+        '200':
+          description: successful
+  "/api/v1/artworks/favorite":
+    post:
+      summary: favorites artwork
+      tags:
+      - artworks
+      responses:
+        '200':
+          description: successful
   "/api/v1/register":
     post:
       summary: create user
