@@ -19,6 +19,10 @@ Rails.application.routes.draw do
       post '/register', controller: 'users', action: 'register'
       post '/login', controller: 'users', action: 'login'
       get '/auto_login', controller: 'users', action: 'auto_login'
+
+      resources :artworks, only: %i[index show]
+      get '/artworks/search', controller: 'artworks', action: 'search'
+      get '/artworks/favorites', controller: 'artworks', action: 'favorites'
     end
   end
 end
