@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
       resources :artworks, only: %i[index show]
       get '/artworks/search/:search_term', controller: 'artworks', action: 'search'
-      post '/artworks/favorite', controller: 'artworks', action: 'favorites'
+      post '/artworks/favorite', controller: 'artworks', action: 'favorite'
     end
   end
 end
