@@ -22,6 +22,8 @@ paths:
       responses:
         '200':
           description: successful
+        '401':
+          description: unauthorized
   "/api/v1/artworks/{id}":
     parameters:
     - name: id
@@ -37,6 +39,8 @@ paths:
       responses:
         '200':
           description: successful
+        '401':
+          description: unauthorized
   "/api/v1/artworks/search/{search_term}":
     parameters:
     - name: search_term
@@ -52,14 +56,29 @@ paths:
       responses:
         '200':
           description: successful
+        '401':
+          description: unauthorized
   "/api/v1/artworks/favorite":
     post:
       summary: favorites artwork
       tags:
       - artworks
+      parameters: []
       responses:
         '200':
           description: successful
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                artwork_id:
+                  type: integer
+              required:
+              - artwork_id
   "/api/v1/register":
     post:
       summary: create user

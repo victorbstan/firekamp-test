@@ -22,6 +22,8 @@ describe 'api/v1/users', type: :request do
                 }
 
       response(200, 'successful') do
+        let(:Authorization) {}
+
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
